@@ -6,6 +6,10 @@ def move_file(command: str) -> None:
     if not command:
         return
 
+    parts = command.split()
+    if not len(parts) == 3 and parts[0] == "mv":
+        raise Exception("Move file not supported")
+
     _, source, destination = command.split(" ")
 
     destination_dir = os.path.dirname(destination)
